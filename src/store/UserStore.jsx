@@ -1,4 +1,4 @@
-import { action, computed, makeObservable, observable, autorun, runInAction } from 'mobx';
+// import { action, computed, makeObservable, observable, autorun, runInAction } from 'mobx';
 import { Button, Typography } from '@mui/material';
 // DEFAULT STATE
 
@@ -40,17 +40,7 @@ class UserStore {
     }
 
     chackUser = (data) => {
-        var res = this.user.find(d => d.name == data.user && d.pwd == data.pwd)//חיפןש במערך עובד
-        if (res != undefined) {
-            return 1
-        }
-        else { //אם לא מצא- תחפש במערך מנהל
-            res = this.manager.find(d => d.name == data.user && d.pwd == data.pwd)
-            if (res != undefined) {
-                return 2
-            }
-        }
-        return 0;// -משתמש חדש - לא קיים
+     
     }
     
     

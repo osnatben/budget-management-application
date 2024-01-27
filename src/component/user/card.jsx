@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Form from '../form/FormState';
 // import image from '../assets/image';
+import PopUp from '../form/PopUp'
 
 export default function MultiActionAreaCard({title,image,text}) {
 
@@ -29,12 +30,13 @@ export default function MultiActionAreaCard({title,image,text}) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary"         
+        {/* <Button size="small" color="primary"         
         //  onClick={move}        
          >
          
         Share       
-        </Button>
+        </Button> */}
+        <PopUp></PopUp>
       </CardActions>
     </Card>
   );

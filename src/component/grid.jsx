@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
-import Card from './user/card'
+import Card from './user/Card'
 import kkl from '../assets/image/kkl.png'
 import efshari from '../assets/image/efshri.png'
 import ruach from '../assets/image/ruach.png'

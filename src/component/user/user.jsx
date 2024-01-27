@@ -2,7 +2,8 @@ import UserStore from "../../store/UserStore";
 // import Card from './user/card'
 // import MultiActionAreaCard from './user/card'
 
-import { observer } from "mobx-react-lite";
+ import { observer } from "mobx-react-lite";
+
 
 const User = observer(({ index }) => {
 //UserStore.user[index]={}

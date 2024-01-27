@@ -9,7 +9,7 @@ import CardMedia from '@mui/material/CardMedia';
 import { Input as BaseInput } from '@mui/base/Input';
 import { styled } from '@mui/system';
 import { Input } from '@mui/base/Input';
-import Information from './information';
+import Information from './Information';
 import { Select } from '@mui/material';
 
 
