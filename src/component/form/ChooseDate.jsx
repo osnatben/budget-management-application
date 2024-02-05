@@ -9,7 +9,7 @@ export default function ReferenceDateUsingValue() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['DatePicker']}>
-        <DatePicker
+        <DatePicker sx={{ maxWidth: 200 }} 
           defaultValue={dayjs('2024-01-25')}
           views={['year','month' ,'day' ]}
         />

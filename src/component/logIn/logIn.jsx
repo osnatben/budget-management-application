@@ -1,42 +1,38 @@
 import React from 'react'
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 // import Admin from '../Admin/admin';
 // import User from '../User/user';
 import { Button, TextField, Typography, } from '@mui/material';
 import UserStore from '../../store/UserStore';
-import Check from './Check';
-import CheckLogin from '../Data/checkLogin';
+// import Check from './Check';
+import CheckLogin from '../Data/CheckLogin';
+import { useNavigate } from 'react-router-dom';
+import BusinessDetailsStore from '../Data/BusinessDetailsStore';
 
 
 export default function LogIn() {
 
     const userRef = useRef();
     const errRef = useRef();
-
+    const navigate = useNavigate();
     const [name, setUser] = useState('');
     const [pwd, setPwd] = useState('');
-    const [errMsg, setErrMsg] = useState('');
-    // const [success, setSuccess] = useState(0);
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
-    useEffect(() => {
-        setErrMsg('');
-    }, [name, pwd])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(name, pwd);
-        // setSuccess(UserStore.addUser=());
-        CheckLogin(name, pwd);
+        const resLogIn = await CheckLogin(name, pwd);
 
-        // setSuccess();
-        // setSuccess(UserStore.chackUser={ name, pwd });
-        // console.log(success);
+        if (resLogIn === 1) {
+            BusinessDetailsStore.isLogin=true;
+            navigate('/admin')
+        }
+        else {
+            navigate('/user')
+        }
         setUser('');
         setPwd('');
-
     }
 
 
@@ -44,28 +40,17 @@ export default function LogIn() {
         <>
             {
                 <section>
-                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}
-                        aria-live="assertive">{errMsg}</p>
-                  
-                    <h3>Sign In</h3>
+                    <h3 className='textWhite' >Sign In</h3>
                     <form onSubmit={handleSubmit}>
                         <TextField type="text" id="userName" label="Name" variant="outlined" color="secondary"
-                            ref={userRef}
-                            autoComplete='off'
-                            onChange={(e) => setUser(e.target.value)}
-                            value={name}
-                            required
-                        />
-                        <br />
-                        <br />
-                        <TextField type="password" id="password" label="Password" variant="outlined" color="secondary"
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
-                            required />
-                        <br />
-                        <br />
-                        <Button type='submit' variant="contained" color="secondary">Log In</Button>
+                            ref={userRef} autoComplete='off' onChange={(e) => setUser(e.target.value)} value={name} required />
 
+                        <br /> <br />
+
+                        <TextField type="password" id="password" label="Password" variant="outlined" color="secondary"
+                            onChange={(e) => setPwd(e.target.value)} value={pwd} required />
+                        <br /> <br />
+                        <Button type='submit' variant="contained" color="secondary">Log In</Button>
                     </form>
                 </section>
             }

@@ -2,7 +2,11 @@ import * as React from 'react';
 import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAutosize';
 import { styled } from '@mui/system';
 
-export default function EmptyTextarea() {
+export default function EmptyTextarea({ setFormData, formData, title }) {
+  const handleChange = (event) => {
+    setFormData({ ...formData, [title]: event.target.value });
+  };
+
   const blue = {
     100: '#DAECFF',
     200: '#b6daff',
@@ -28,11 +32,13 @@ export default function EmptyTextarea() {
   const Textarea = styled(BaseTextareaAutosize)(
     ({ theme }) => `
     box-sizing: border-box;
-    width: 320px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
+    width: 200px;
+   
+     font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.5;
+    margin: 3px 0;
     padding: 12px;
     border-radius: 12px 12px 0 12px;
     color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
@@ -50,12 +56,11 @@ export default function EmptyTextarea() {
       box-shadow: 0 0 0 3px ${theme.palette.mode === 'dark' ? blue[600] : blue[200]};
     }
 
-    // firefox
     &:focus-visible {
       outline: 0;
     }
   `,
   );
 
-  return <Textarea aria-label="empty textarea" placeholder="כמה מילים על הפעילות" />;
+  return <Textarea onChange={handleChange} aria-label="empty textarea" placeholder="כמה מילים על הפעילות"   />;
 }

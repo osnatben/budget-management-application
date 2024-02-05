@@ -1,99 +1,112 @@
 import React from 'react'
-import { useRef, useState, useEffect } from 'react';
-// import Admin from '../Admin/admin';
-// import User from '../User/user';
+import { useState, useEffect } from 'react';
 import { Button, TextField, Typography, } from '@mui/material';
 import UserStore from '../../store/UserStore';
-// import Check from './check';
 import SelectPlan from './SelectPlan';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import SelectForm from './SelectForm';
-import ChooseDate from './ChooseDate';
+// import ChooseDate from './ChooseDate';
 import TextErea from './TextErea';
+import { Stack } from '@mui/system';
+import dayjs from 'dayjs';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DateTimePicker } from '@mui/x-date-pickers';
+import { useSelector, useDispatch } from 'react-redux';
+import { AddMeeting } from '../Data/MeetingServer';
 
 
 
 
 
 
-export default function LogIn() {
+const Information = ({ handleClose }) => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        appointment: '',
+        DateTime: '',
+        // Plan:'',
+        crown: '',
+        fewWords: '',
+        AmountUtilize: ''
 
-    const userRef = useRef();
-    const errRef = useRef();
+    });
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    // const [errMsg, setErrMsg] = useState('');
-    // const [success, setSuccess] = useState(0);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        // setFormData((prevData) => ({
+        //     ...prevData,
+        //     [name]: value,
+        // }));
+        setFormData({ ...formData, [name]: value })
+    };
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
-    useEffect(() => {
-        // setErrMsg('');
-    }, [name, email])
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name, email);
-        // setSuccess(UserStore.addUser=());
+        console.log(formData);
 
+        AddMeeting(formData)
+            .then(x => { handleClose()})
+            .catch(x => { 
+                //הודעה בנפילה בצבע  אדום במקום ALERT
+            });
 
-        setSuccess(UserStore.chackUser = { name, email });
-        setSuccess(UserStore.chackUser = { name, email });
-        console.log(success);
-        setUser('');
-        setPwd('');
-
-
-    }
-
+    };
 
     return (
         <>
             <section>
-                {/* <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}
-                    aria-live="assertive">{errMsg}</p> */}
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} >
+                    <Stack direction={'row'} gap={2} >
+                        <TextField type="text" id="name" label="name" name='name' variant="outlined" color="secondary" className="input-item"
+                            sx={{ maxWidth: 200 }} autoComplete='off' value={formData.name} onChange={handleChange} />
 
-                    <TextField type="text" id="name" label="name" variant="outlined" color="secondary"
-                        ref={userRef} autoComplete='off' onChange={(e) => setName(e.target.value)} value={name} required />
+                        {/* בחירת אגף */}
+                        <SelectForm title='appointment' setFormData={setFormData} formData={formData} select1={'חינוך'} select2={'תרבות'} select3={'רווחה'} select4={'קהילה'} ></SelectForm>
+                    </Stack>
 
-                    {/* בחירת אגף */}
-                    <SelectForm title={'אגף'} select1={'חינוך'} select2={'תרבות'} select3={'רווחה'} select4={'קהילה'}></SelectForm>
+                    <Stack direction={'row'} gap={2}>
+                        <TextField type="email" name="email" id="email" label="email" variant="outlined" color="secondary" // ref={userRef}
+                            sx={{ maxWidth: 200 }} autoComplete='off' value={formData.email} onChange={handleChange} />
 
-                    <TextField type="email" id="email" label="email" variant="outlined" color="secondary"
-                        ref={userRef} autoComplete='off' onChange={(e) => setEmail(e.target.value)} value={email} required />
-
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DateTimePicker sx={{ maxWidth: 200 }} id="dateTime1" name="dateTime" value={formData.dateTime} onChange={(newDate) => handleChange({ target: { name: 'dateTime', value: newDate.$d } })} />
+                        </LocalizationProvider>
+                        {/* <ChooseDate></ChooseDate> */}
+                    </Stack>
+                    <br />
 
                     {/* -- בחירת תוכנית  */}
-                    <SelectPlan></SelectPlan>
+                    <SelectPlan sx={{ minWidth: 200 }} title='plan' setFormData={setFormData} formData={formData}></SelectPlan>
+                    <br />
 
-                    {/* בחירת קהל יעד */}
-                    <SelectForm title={'קהל יעד'} select1={'גיל הרך'} select2={'נוער'} select3={'צעירים'} select4={'מבוגרים'}></SelectForm>
+                    <Stack direction={'row'} gap={2}>
 
-                    <ChooseDate></ChooseDate>
+                        {/* בחירת קהל יעד */}
+                        <SelectForm title='crowd' setFormData={setFormData} formData={formData} select1={'גיל הרך'} select2={'נוער'} select3={'צעירים'} select4={'מבוגרים'}></SelectForm>
 
-                    <TextErea></TextErea>
+                        <TextErea title="fewWords" onChange={handleChange} formData={formData}></TextErea>
+                    </Stack>
 
+                    <br />
                     {/* סכום לניצול */}
-                    <TextField type="text" id="AmountUtilize" label="סכום תקציב לפעילות" variant="outlined" color="secondary"
-                        ref={userRef}
-                        autoComplete='off'
-                        onChange={(e) => setUser(e.target.value)}
-                        value={name}
-                        required
-                    />
-                    <Button type='submit' variant="contained" color="secondary" onClick={o => o.addUser = { name, pwd }}>להעביר בקשה</Button>
+                    <TextField type="number" name="AmountUtilize" label="סכום תקציב לפעילות" variant="outlined" color="secondary" onChange={handleChange}
+                        defaultValue={5000} sx={{ maxWidth: 200 }} slotprops={{ input: { min: 1000, max: 150000, step: 1000, } }} required />
+                    <br /><br />
+
+                    <Button type='submit' variant="contained" color="secondary"
+                        onClick={handleSubmit}
+                    >להעביר בקשה</Button>
 
                 </form>
             </section>
-
-
         </>
-
     )
 }
+export default Information;

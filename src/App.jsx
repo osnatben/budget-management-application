@@ -12,6 +12,8 @@ import ChooseDate from './component/form/ChooseDate';
 
 import Card from './component/user/Card'
 import PopUp from './component/form/PopUp'
+import { Outlet } from 'react-router-dom';
+import Details from './component/details/Details';
 // import Grid from '@mui/material/Grid'; // Grid version 1
 // import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 
@@ -21,13 +23,15 @@ import PopUp from './component/form/PopUp'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
       {/* <ThemeContex.Provider value={manager}> */}
-
+      {/* <Details></Details> */}
+      <Details></Details>
       <LogIn></LogIn>
+
       {/* <PopUp></PopUp> */}
       {/* <Grid></Grid> */}
       {/* <MultiActionAreaCard></MultiActionAreaCard> */}
@@ -40,7 +44,6 @@ function App() {
       {/* <Card></Card> */}
 
       {/* </ThemeContex.Provider> */}
-
 
     </>
   )

@@ -25,38 +25,35 @@ export default function NestedGridColumns() {
 
   return (
     <>
-      <img src={logo}  className='logo'/>
-      <h1 >ניצול תקציבים</h1>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2} columns={24}>
-          <Grid xs={8}>
-            <Card title={"קרן קיימת לישראל"} image={kkl} text={"חשיפת הנוער והמבוגר לאיכות הסביבה הירוקה ושמירת הטבע הטהור"}></Card>
+    
+      <img src={logo} className='logo' />
+      <h1 className='titles'>ניצול תקציבים</h1>
+      <Box sx={{ flexGrow: 1 }}  >
+        <Grid  container spacing={3} 
+        // columns={12} sx={{ textAlign: 'center' }}
+        >
+        <Grid >
+          <Card title={"קרן קיימת לישראל"} image={kkl} text={"חשיפת הנוער והמבוגר לאיכות הסביבה הירוקה ושמירת הטבע הטהור"}></Card>
           </Grid>
-          <Grid container xs={16}>
-            <Grid xs={12}>
-              <Card title={"אפשרי בריא"} image={efshari} text={"הדגשת חשיבות אורך חיים בריא לכל אורך החיים"}></Card>
-            </Grid>
-            <Grid xs={12}>
-
-              <Card title={"רוח תרבות"} image={ruach} text={"קידום החוסן החברתי ומיקומו של הפרט בתוך הכלל"}></Card>
-            </Grid>
+          <Grid >
+            <Card title={"אפשרי בריא"} image={efshari} text={"הדגשת חשיבות אורך חיים בריא לכל אורך החיים"}></Card>
           </Grid>
-          <Grid xs={8}>
-            {/* <Item>xs=8/24</Item> */}
-            <Card title={"משרד התרבות והספורט"} image={tarbut} text={"התרבות והספורט מהווים את אושיות דמותה של חברה איכותית ובריאה"}></Card>
-          </Grid>
-          <Grid container xs={16} columns={12}>
-            <Grid xs={6}>
-              {/* <Item>nested xs=6/12</Item> */}
-              <Card title={"רלבד"} image={ralbad} text={"הטמעת כללי זהירות בדרכים בדור העתיד"}></Card>
-            </Grid>
-            <Grid xs={6}>
-              {/* <Item>nested xs=6/12</Item> */}
-              <Card title={"משיב הרוח"} image={mashiv} text={"סיוע בשיקום ענף התרבות ולטובת פעילות הפגה עבור מאות אלפי מפונים ותושבים בכל ברחבי הארץ"}></Card>
-            </Grid>
-          </Grid>
+          <Grid >
+            <Card title={"רוח תרבות"} image={ruach} text={"קידום החוסן החברתי ומיקומו של הפרט בתוך הכלל"}></Card>
+          </Grid>        
+        <Grid >       
+          <Card title={"משרד התרבות והספורט"} image={tarbut} text={"התרבות והספורט מהווים את אושיות דמותה של חברה איכותית ובריאה"}></Card>
+        </Grid>       
+          <Grid>          
+            <Card title={"רלבד"} image={ralbad} text={"  הטמעת כללי זהירות בדרכים בדור העתיד בצורה חוויתית ומהנה"}></Card>
+          </Grid>        
+            <Grid>  
+            <Card title={"משיב הרוח"} image={mashiv} text={"סיוע בשיקום ענף התרבות ולטובת פעילות הפגה עבור מפונים ותושבים בכל הארץ"}></Card>
+          </Grid>       
         </Grid>
+
       </Box>
+     
     </>
   );
 }

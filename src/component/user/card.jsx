@@ -11,7 +11,7 @@ import PopUp from '../form/PopUp'
 export default function MultiActionAreaCard({title,image,text}) {
 
   return (
-    <Card  sx={{ maxWidth: 345 }} >
+    <Card  sx={{maxWidth: 300, maxHeight: 350 }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -36,7 +36,7 @@ export default function MultiActionAreaCard({title,image,text}) {
          
         Share       
         </Button> */}
-        <PopUp></PopUp>
+        <PopUp title={title}></PopUp>
       </CardActions>
     </Card>
   );

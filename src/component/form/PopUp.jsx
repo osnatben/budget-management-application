@@ -7,13 +7,20 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormState from './FormState'
+import UserStore from '../../store/UserStore';
+import Information from './Information';
 
-export default function FormDialog() {
+export default function FormDialog({ title }) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
     };
+    const sendReq=()=>{
+        // alert(UserStore.aplly.name)
+    }
+
+    const count = 1234;
 
     const handleClose = () => {
         setOpen(false);
@@ -24,11 +31,12 @@ export default function FormDialog() {
             <Button variant="outlined" onClick={handleClickOpen}>
                 הגשת בקשה
             </Button>
+
             <Dialog
                 open={open}
                 onClose={handleClose}
                 PaperProps={{
-                    component: 'form',
+                    // component: 'form',
                     onSubmit: (event) => {
                         event.preventDefault();
                         const formData = new FormData(event.currentTarget);
@@ -39,13 +47,14 @@ export default function FormDialog() {
                     },
                 }}
             >
-                <DialogTitle>שם חברה+מספר בקשה</DialogTitle>
+                <DialogTitle>{title} -- מספר בקשה {count}</DialogTitle>
                 <DialogContent>
-                    <FormState></FormState>
+                    {/* <FormState></FormState> */}
+                    <Information handleClose={handleClose}></Information>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>ביטול</Button>
-                    <Button type="submit">שליחת בקשה</Button>
+                    {/* <Button onClick={sendReq}>שליחת בקשה</Button> */}
                 </DialogActions>
             </Dialog>
         </React.Fragment>
