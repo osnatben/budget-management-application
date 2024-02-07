@@ -1,8 +1,16 @@
 # React + Vite
+הנחיות והוראות לבדיקת הפרויקט:
+א. שיניתי את הסרבר של המורה
+האפליקציה נפתחת רק למשתמשים רשומים:
+מנהל -admin סיסמא: 123456
+מערך משתמשים: osnat 1234, dvori 5678
+:ב. נצמדתי להנחיות של המורה והתאמתי כל דרישה לפי נתוני האפליקציה 
+רשימת השרותים: רשימת נותני תקציבים.
+קביעת פגישות: שליחת בקשה לקבלת תקציב לארוע.
+בדיקות התאריך: לא ניתן לקבוע יותר מארוע אחד ביום.
+הבקשות מסודרות לפי התאריכים של ביצוע הפעילות, וכן לא מציג בקשות עבור תאריכים שעברו.
+צבעי הבקשות ע"פ סטטוס הבקשה: מאושר, נדחה,מחכה לאישור.
+גם בצבעי הבקשות המנהל יכול לשנות סטטוס מאושר,נדחה או מחכה לאישור ע"י שליחה לסרבר.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

@@ -1,11 +1,14 @@
 #root {
   /* max-width: 1280px; */
-  max-width: 100%;
+  /* max-width: 100%; */
   /* margin: 0 auto;  */
-  margin: 0;
-  padding: 3rem 15rem;
+  /* margin: 0;
+  padding: 3rem 15rem; */
   text-align: center;
   background-color: darkslategrey;
+  margin: 0;
+  padding: 0;
+  /* overflow-y: hidden;  */
 }
 body {
   font-family: 'Open Sans', sans-serif;
@@ -66,4 +69,15 @@ padding:0em  20em ;
 .textWhite{
   color:rgb(255, 255, 255);
   text-align: center;
+}
+.green{
+  color: green;
+}
+
+.orange{
+  color: rgb(235, 135, 48);
+}
+
+.red{
+  color: red;
 }

@@ -3,7 +3,7 @@ import { observable, makeObservable, action } from 'mobx';
 
 class BusinessStore {
   businessDetails = {}
-isLogin=false;
+  isLogin=false;
   constructor() {
     makeObservable(this, {
       businessDetails: observable,
@@ -23,7 +23,7 @@ isLogin=false;
         name: "החברה למתנסים",
         address: " רח' המלאכה 4, לוד 7152008",
         phone: " 073-2870100",
-        owner: "Tal baskas - CEO",
+        owner: " מנכל החברה: טל בסקס ",
         logo: "https://coding-academy.org/images/ca_logo.png",
         description: "כ-180 מתנסים פועלים בכל רחבי הארץ, בערי פיתוח ובשכונות מצוקה, בערים גדולות ואחרות, במועצות מקומיות ואזוריות",
 

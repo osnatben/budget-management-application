@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-
 import { SetMeetings, UpdateMeeting } from '../Data/MeetingServer'
 import StoreMeeting from '../Data/StoreMeeting';
 import { observer } from 'mobx-react-lite';
-import { get } from 'mobx';
 
 const RequestsAdmin = observer(() => {
 
@@ -14,52 +12,60 @@ const RequestsAdmin = observer(() => {
 
   }, [])
   const updateStatus = (id, status) => {
-    UpdateMeeting({id,status})
+    UpdateMeeting({ id, status })
 
   }
-  const getClasName = ( date) => {
-
-
-    let color = "green";
-
-    if (new Date().toDateString(0) === new Date(date).toDateString(0)) {
-      color = 'red'
-    }
-    else if (new Date() > new Date(date)) {
-      color = "gray"
-    }
-    else if (new Date().setDate(new Date().getDate() + 7) >= new Date(date)) {
-      color = "orange"
-    }
-    
-
-    //.toDateString())
-    // if (status === 1) {
-    //   color = 'green'
-    // }
-    // else if (status === -1) {
+  const getClasName = (status) => {
+    console.log(status, "status")
+    let color = "orange";
+    //צבעים לפי תאריך
+    // if (new Date().toDateString(0) === new Date(date).toDateString(0)) {
     //   color = 'red'
     // }
-  console.log(color,date,new Date(date).toDateString(0),new Date().toDateString())
-     return color
+    // else if (new Date() > new Date(date)) {
+    //   color = "gray"
+    // }
+    // else if (new Date().setDate(new Date().getDate() + 7) >= new Date(date)) {
+    //   color = "orange"
+    // }
+
+    //.toDateString())
+
+    if (status === 1) {
+      color = 'green'
+    }
+    else if (status === -1) {
+      color = 'red'
+    }
+    return color
+  }
+  const getTime = (dateTime) => {
+    const date = new Date(dateTime);
+
+    const formattedDate = new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    }).format(date);
+    return formattedDate;
   }
 
+
   return (
-    <div>RequestsAdmin
-      gfghjk,{StoreMeeting.meeting.length}
-      {StoreMeeting.meeting.map(x => <div className={getClasName(x.dateTime)}>{x.name}|{x.dateTime?.toString("yyyy-MM-dd")}
-        <button onClick={() => updateStatus(x.id,1)}>אשר</button>
-        {x.status} | {getClasName(x.dateTime)} | {x.id}|
-        <button onClick={() => updateStatus(x.id,-1)}>דחה בקשה</button>
+    <div>מספר הבקשות הממתינות לאישור:
+      {StoreMeeting.meeting.length}
+   
+      {StoreMeeting.meeting.filter(x => new Date(x.dateTime) > new Date()).sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime)).map(x => <div className={getClasName(x.status)}>{ getTime(x.dateTime)}
+
+       | {x.status == 1 ? 'מאושר' : x.status == -1 ? 'סורב' : " מחכה לאישור"} |
+         מספר בקשה:{x.id}   |  מגיש הבקשה:{x.name} | 
+        <button onClick={() => updateStatus(x.id, -1)}>דחה בקשה</button>
+        <button onClick={() => updateStatus(x.id, 1)}>אשר</button>
       </div>)}
     </div>
   )
 }
 )
 export default RequestsAdmin
-
-
-
-
-
-

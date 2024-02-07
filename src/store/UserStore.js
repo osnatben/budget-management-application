@@ -18,32 +18,16 @@ class UserStore {
         name: '',
         password: ''
     }
-    // meeting = [{
-    //     // name: "",
-    //     // date: DateTimePicker,
-    //     name: '',
-    //     email: '',
-    //     appointment: '',
-    //     DateTime: '',
-    //     Plan:'',
-    //     crown:'',
-    //     fewWords: '',
-    //     AmountUtilize: '',
-    //     date: DateTimePicker
-    // }]
 
-    aplly=[{
-        name:"",
-        email:""
-    }]
+
+  
     constructor() {
         makeObservable(this, {
             user: observable,
             totalSubject: computed,
             updateUser: action,
             addUser: action,
-            addMeeting: action,
-            aplly:action
+            addMeeting: action
         });
     }
 
@@ -51,19 +35,12 @@ class UserStore {
         this.meeting.push(meeting);
         return { ...this.meeting, meeting }
     }
-    // aplly(value){
-    //     value.aplly=this.aplly.value;
-    //     // console.log(this.aplly.value)
-    // }
-    // All getters behave as computed i.e. instantly calculate without action
+   
     get totalSubject() {
         return this.userInfo;
     }
 
-    // logUserDetails = () => {
-    //     console.log(`Subject length: ${this.totalSubject()}`);
-    // }
-
+   
     updateUser = (name) => {
         return 'NA';
     }

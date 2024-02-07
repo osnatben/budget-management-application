@@ -32,9 +32,8 @@ export default function EmptyTextarea({ setFormData, formData, title }) {
   const Textarea = styled(BaseTextareaAutosize)(
     ({ theme }) => `
     box-sizing: border-box;
-    width: 200px;
-   
-     font-family: 'IBM Plex Sans', sans-serif;
+    width: 410px;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.5;
@@ -62,5 +61,5 @@ export default function EmptyTextarea({ setFormData, formData, title }) {
   `,
   );
 
-  return <Textarea onChange={handleChange} aria-label="empty textarea" placeholder="כמה מילים על הפעילות"   />;
+  return <Textarea onChange={handleChange} aria-label="empty textarea" placeholder="כמה מילים על הפעילות" />;
 }

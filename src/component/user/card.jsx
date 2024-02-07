@@ -3,39 +3,31 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
-import Form from '../form/FormState';
-// import image from '../assets/image';
+import { CardActionArea, CardActions } from '@mui/material';
 import PopUp from '../form/PopUp'
 
-export default function MultiActionAreaCard({title,image,text}) {
+export default function MultiActionAreaCard({ title, image, text }) {
 
   return (
-    <Card  sx={{maxWidth: 300, maxHeight: 350 }}>
+    <Card sx={{ maxWidth: 300, maxHeight: 350 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="150"
-          width="150"          
-          image={image} 
-          className='card'         
+          width="150"
+          image={image}
+          className='card'
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {text}            
+            {text}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        {/* <Button size="small" color="primary"         
-        //  onClick={move}        
-         >
-         
-        Share       
-        </Button> */}
         <PopUp title={title}></PopUp>
       </CardActions>
     </Card>

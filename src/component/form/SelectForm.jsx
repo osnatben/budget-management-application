@@ -6,22 +6,20 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 
-export default function BasicSelect({title,select1,select2,select3,select4,formData,setFormData}) {
+export default function BasicSelect({ title, select1, select2, select3, select4, formData, setFormData }) {
 
   const handleChange = (event) => {
-    setFormData({...formData,[title]:event.target.value})
+    setFormData({ ...formData, [title]: event.target.value })
   };
 
   return (
-    <Box 
-    sx={{ minWidth: 200,margin:0 }}
-    >
-      <FormControl       >
-        <InputLabel id="demo-simple-select-label">{title} </InputLabel>
+    <Box >
+      <FormControl sx={{ minWidth: 200 }}   >
+        <InputLabel  id="demo-simple-select-label" sx={{margin:0}}>{title} </InputLabel>
         <Select className="input-item"
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-           value={formData[title]}
+          value={formData[title]}
           label="department"
           onChange={handleChange}
         >

@@ -9,6 +9,8 @@ import UpdateAdmin from './component/admin/UpdateAdmin.jsx';
 import RequestsAdmin from './component/admin/RequestsAdmin.jsx';
 import LogIn from './component/logIn/LogIn.jsx';
 import Grid from './component/Grid.jsx'
+import User from './component/user/User.jsx';
+import UpdateDetails from './component/admin/UpdateDetails.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,39 +21,29 @@ const router = createBrowserRouter([
     element: <Admin />,
     children: [
       {
-        path: "update",
+        path: "updateDetails",
         element: <UpdateAdmin/>
       },
       {
         path: ":id",
         element: <RequestsAdmin/>,
       },
+      {
+        path: "addService",
+        element: <UpdateDetails/>,
+      },
     ]
     
   },
   {
     path: 'user',
-    element: <Grid />
+    element: <User />
   },
   {
     path: "services",
     element: <LogIn />,//<Outlet/>
-    children: [
-      {
-        path: "add",
-        element: <div >bbb</div>,
-      },
-      {
-        path: ":id",
-        element: <div >aaaaa</div>,
-      },
-    ]
-  },
-  //   {
-  // path: "about",
-  //   element: <About />,
-  // },
-  ,
+ 
+  }, 
 
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(

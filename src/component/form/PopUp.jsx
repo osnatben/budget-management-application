@@ -10,6 +10,8 @@ import FormState from './FormState'
 import UserStore from '../../store/UserStore';
 import Information from './Information';
 
+
+
 export default function FormDialog({ title }) {
     const [open, setOpen] = React.useState(false);
 
@@ -20,7 +22,7 @@ export default function FormDialog({ title }) {
         // alert(UserStore.aplly.name)
     }
 
-    const count = 1234;
+    // const count = 1234;
 
     const handleClose = () => {
         setOpen(false);
@@ -28,7 +30,7 @@ export default function FormDialog({ title }) {
 
     return (
         <React.Fragment>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            <Button variant="outlined" onClick={handleClickOpen} >
                 הגשת בקשה
             </Button>
 
@@ -47,7 +49,7 @@ export default function FormDialog({ title }) {
                     },
                 }}
             >
-                <DialogTitle>{title} -- מספר בקשה {count}</DialogTitle>
+                <DialogTitle>{title}</DialogTitle>
                 <DialogContent>
                     {/* <FormState></FormState> */}
                     <Information handleClose={handleClose}></Information>

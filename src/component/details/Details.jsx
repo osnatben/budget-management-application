@@ -9,7 +9,6 @@ const Details = observer(() => {
     useEffect(() => {
 
         if (!BusinessDetailsStore.businessDetails.length) {
-
             BusinessDetails()
             // console.log(BusinessDetailsStore.businessDetails)
         }

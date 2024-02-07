@@ -38,18 +38,17 @@ console.log(meeting)
         const Meeting = await axios.put("http://localhost:8787/appointment", meeting);
         console.log(Meeting.status);
         if (Meeting.status === 200) {
-            alert("הבקשה נשלחה לאישור");
+            // alert("העדכון בוצע בהצלחה");
 
             StoreMeeting.UpdateMeeting(meeting);
 
         }
     }
 
-
     catch (e) {
         console.log(e)
         if (e.response) {
-            alert('התאריך תפוס');
+            alert('אין נתונים');
         }
         else {
             alert('server failed');
